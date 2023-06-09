@@ -21,4 +21,30 @@ public class MergeSort {
     right = sort(right);
     return merge(left, right);
   }
+  private static List<String> merge(List<String> list1, List<String> list2) {
+    List<String> result = new ArrayList<>(list1.size() + list2.size());
+    int i1 = 0;
+    int i2 = 0;
+
+    while (i1 < list1.size() || i2 < list2.size()) {
+      if (i1 < list1.size() && i2 < list2.size()) {
+        if (list1.get(i1).compareTo(list2.get(i2)) <= 0) {
+          result.add(list1.get(i1));
+          ++i1;
+        } else {
+          result.add(list2.get(i2));
+          ++i2;
+        }
+      } else if (i1 < list1.size()) {
+        result.add(list1.get(i1));
+        ++i1;
+      } else {
+        result.add(list2.get(i2));
+        ++i2;
+      }
+    }
+
+    return result;
+  }
+}
 
