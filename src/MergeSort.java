@@ -9,4 +9,16 @@ public class MergeSort {
     strings = sort(strings);
     System.out.println(strings);
   }
+  public static List<String> sort(List<String> strings) {
+    if (strings.size() < 2) {
+      return strings;
+    }
+    int mid = strings.size() / 2;
+    List<String> left = strings.subList(0, mid);
+    List<String> right = strings.subList(mid, strings.size());
+
+    left = sort(left);
+    right = sort(right);
+    return merge(left, right);
+  }
 
